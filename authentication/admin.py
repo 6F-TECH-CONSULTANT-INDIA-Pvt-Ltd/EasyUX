@@ -2,7 +2,7 @@
 from email.quoprimime import unquote
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, SubscriptionPlan, Subscription
+from .models import CustomUser, Permission, SubscriptionPlan, Subscription
 from django.contrib.auth.forms import AdminPasswordChangeForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -84,3 +84,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('organization', 'plan', 'start_date', 'end_date', 'is_active')
     search_fields = ('organization__name', 'plan__name')
     list_filter = ('plan', 'start_date', 'end_date')
+    
+@admin.register(Permission)
+class PermissionsAdmin(admin.ModelAdmin):
+    list_display = ('role',)
+    search_fields = ('role',)
+   

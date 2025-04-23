@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 
+from authentication.decorators import check_permission
+
 @login_required
 def profile_view(request):
     user = request.user
@@ -33,3 +35,6 @@ class CustomPasswordChangeView(PasswordChangeView):
             user.save()
         return response
 
+@check_permission('accounts.read_accounts')
+def unauthorized_view(request):
+    return render(request, 'unauthorized.html')
