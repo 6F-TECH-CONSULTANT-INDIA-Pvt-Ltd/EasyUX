@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import profile_view, login_view, signup_view, CustomPasswordChangeView
+from .views import profile_view, login_view, signup_view, CustomPasswordChangeView, unauthorized_view
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -14,4 +14,5 @@ urlpatterns = [
 
     path('password_change/', CustomPasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('access-denied/', unauthorized_view, name='unauthorized'),  # Adjust the import as needed
 ]

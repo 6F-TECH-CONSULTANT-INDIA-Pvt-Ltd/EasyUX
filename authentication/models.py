@@ -45,3 +45,30 @@ class Subscription(models.Model):
 
     def __str__(self):
         return f"{self.organization.name} - {self.plan.name}"
+    
+    
+from django.db import models
+ 
+ 
+class Permission(models.Model):
+    role = models.CharField(max_length=100, blank=True, null=True)  # optional placeholder
+ 
+    class Meta:
+        permissions = [
+            ("create_room_reservation", "Can create room reservation"),
+           
+            ("create_accounts", "Can create accounts"),
+            ("read_accounts", "Can read accounts"),
+            ("update_accounts", "Can update accounts"),
+            ("delete_accounts", "Can delete accounts"),
+ 
+            ("create_purchase", "Can create purchase"),
+            ("update_purchase", "Can update purchase"),
+            ("delete_purchase", "Can delete purchase"),
+            ("read_purchase", "Can read purchase"),
+ 
+            ("create_units", "Can create units"),
+            ("update_units", "Can update units"),
+            ("delete_units", "Can delete units"),
+            ("read_units", "Can read units"),
+        ]
