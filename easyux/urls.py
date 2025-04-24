@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from authentication.views import CustomAdminLoginView
 from openui.views import dashboard_view
-
+from core.views import button
 urlpatterns = [
     path('admin/login/', CustomAdminLoginView.as_view(), name='admin_login'),
     path('dashboard/', dashboard_view, name='dashboard'),
@@ -27,4 +27,5 @@ urlpatterns = [
 
     path('openui/', include('openui.urls')),
     path('authentication/', include('authentication.urls')),
+    path('button/', button)
 ]
